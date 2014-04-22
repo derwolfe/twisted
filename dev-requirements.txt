@@ -1,0 +1,9 @@
+# Cross platform dev-requirements
+#
+# Using these dependencies, you should be able to run Twisted and check code 
+# for compliance with Twisted's coding conventions.
+#
+zope.interface==4.0.2
+twisted-dev-tools==0.0.2
+twistedchecker==0.2.0
+pydoctor==0.5
