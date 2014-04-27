@@ -1,9 +1,17 @@
-# Cross platform dev-requirements
+# Dependencies which are available on all platforms
 #
-# Using these dependencies, you should be able to run Twisted and check code 
+# Using these dependencies, you should be able to run Twisted and check code
 # for compliance with Twisted's coding conventions.
 #
 zope.interface==4.0.2
+
+# Helper for commiters to interact with Twisted development infrastructure.
 twisted-dev-tools==0.0.2
+
+# User for checking Twisted coding standard.
 twistedchecker==0.2.0
+pyflakes==0.8.1
+
+# Used for generating API and narrative documentation.
 pydoctor==0.5
+sphinx==1.2.2

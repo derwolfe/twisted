@@ -23,7 +23,7 @@ rather than for people who want to use Twisted in their own projects.
 
 
 
-
+- :doc:`Getting started <getting_started>`
 - :doc:`Naming <naming>` 
 - :doc:`Philosophy <philosophy>` 
 - :doc:`Security <security>` 
