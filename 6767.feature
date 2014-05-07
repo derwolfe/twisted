@@ -1,0 +1,1 @@
+dev.requirements.txt file lists the dependencies needed to develop Twisted. It is intended to be used in conjunction with pip and virtualenv.
