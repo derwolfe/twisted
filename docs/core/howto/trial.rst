@@ -121,7 +121,7 @@ You should now have the following 4 files:
 
 .. code-block:: console
 
-    
+
     calculus/__init__.py
     calculus/base_1.py
     calculus/test/__init__.py
@@ -150,8 +150,8 @@ an import error.
 
 
 
-Second, make sure you can run the ``trial`` 
-command. That is, make sure the directory containing the ``trial`` 
+Second, make sure you can run the ``trial``
+command. That is, make sure the directory containing the ``trial``
 program on you system is in your shell's ``PATH`` . The easiest way to check if you have this is to
 try running ``trial --help`` at the command line. If
 you see a list of invocation options, you're in business. If your shell
@@ -167,7 +167,7 @@ variables for you operating system.
 
 With those (one-time) preliminary steps out of the way, let's perform
 the tests. Run ``trial calculus.test.test_base_1`` from the
-command line when you are in the directory containing the ``calculus`` 
+command line when you are in the directory containing the ``calculus``
 directory.
 
 You should see the following output (though your files are probably not in
@@ -179,7 +179,7 @@ You should see the following output (though your files are probably not in
 
 .. code-block:: console
 
-    
+
     $ trial calculus.test.test_base_1
     calculus.test.test_base_1
       CalculationTestCase
@@ -187,7 +187,7 @@ You should see the following output (though your files are probably not in
         test_divide ...                                                      [FAIL]
         test_multiply ...                                                    [FAIL]
         test_subtract ...                                                    [FAIL]
-    
+
     ===============================================================================
     [FAIL]
     Traceback (most recent call last):
@@ -196,8 +196,8 @@ You should see the following output (though your files are probably not in
     twisted.trial.unittest.FailTest: not equal:
     a = None
     b = 11
-    
-    
+
+
     calculus.test.test_base_1.CalculationTestCase.test_add
     ===============================================================================
     [FAIL]
@@ -207,8 +207,8 @@ You should see the following output (though your files are probably not in
     twisted.trial.unittest.FailTest: not equal:
     a = None
     b = 2
-    
-    
+
+
     calculus.test.test_base_1.CalculationTestCase.test_divide
     ===============================================================================
     [FAIL]
@@ -218,8 +218,8 @@ You should see the following output (though your files are probably not in
     twisted.trial.unittest.FailTest: not equal:
     a = None
     b = 60
-    
-    
+
+
     calculus.test.test_base_1.CalculationTestCase.test_multiply
     ===============================================================================
     [FAIL]
@@ -229,12 +229,12 @@ You should see the following output (though your files are probably not in
     twisted.trial.unittest.FailTest: not equal:
     a = None
     b = 4
-    
-    
+
+
     calculus.test.test_base_1.CalculationTestCase.test_subtract
     -------------------------------------------------------------------------------
     Ran 4 tests in 0.042s
-    
+
     FAILED (failures=4)
 
 
@@ -275,11 +275,11 @@ The tests can be run by ``trial`` in multiple ways:
   a specific test module. You can follow that logic by putting your class name
   and even a method name to only run those specific tests.
 - .. _core-howto-trial-comment:
-  
-  
-  
-  
-  
+
+
+
+
+
   ``trial --testmodule=calculus/base_1.py`` : use the ``test-case-name`` comment in the first line of
   ``calculus/base_1.py`` to find the tests.
 - ``trial calculus/test`` : run all the tests in the
@@ -347,9 +347,9 @@ is a copy of test_base_1, but with the import changed. Run ``trial`` again as ab
 
 .. code-block:: console
 
-    
+
     $ trial calculus.test.test_base_2
-    
+
     Running 4 tests.
     calculus.test.test_base
       CalculationTestCase
@@ -357,10 +357,10 @@ is a copy of test_base_1, but with the import changed. Run ``trial`` again as ab
         test_divide ...                                                        [OK]
         test_multiply ...                                                      [OK]
         test_subtract ...                                                      [OK]
-    
+
     -------------------------------------------------------------------------------
     Ran 4 tests in 0.067s
-    
+
     PASSED (successes=4)
 
 
@@ -386,7 +386,7 @@ code.
 Note that a test class may also provide the counterpart of ``setUp`` , named ``tearDown`` ,
 which will be called after *each* test (whether successful or
 not). ``tearDown`` is mainly used for post-test
-cleanup purposes. We will not use ``tearDown`` 
+cleanup purposes. We will not use ``tearDown``
 until later.
 
 
@@ -539,10 +539,10 @@ the ``RemoteCalculationFactory`` class. It is in
 ``calculus/remote_1.py`` below. We
 call ``buildProtocol`` to ask the factory to build us a
 protocol object that knows how to talk to our server.  We then make a fake
-network transport, an instance of ``twisted.test.proto_helpers.StringTransport`` 
+network transport, an instance of ``twisted.test.proto_helpers.StringTransport``
 class (note that test packages are generally not part of Twisted's public API;``twisted.test.proto_helpers`` is an exception).  This fake
 transport is the key to the communications. It is used to emulate a network
-connection without a network. The address and port passed to ``buildProtocol`` 
+connection without a network. The address and port passed to ``buildProtocol``
 are typically used by the factory to choose to immediately deny remote connections; since we're using a fake transport, we can choose any value that will be acceptable to the factory. In this case the factory just ignores the address, so we don't need to pick anything in particular.
 
 
@@ -605,7 +605,7 @@ run a server to test it with a telnet client. To do that, call ``python calculus
 
 .. code-block:: console
 
-    
+
     2008-04-25 10:53:27+0200 [-] Log opened.
     2008-04-25 10:53:27+0200 [-] __main__.RemoteCalculationFactory starting on 46194
     2008-04-25 10:53:27+0200 [-] Starting factory <__main__.RemoteCalculationFactory instance at 0x846a0cc>
@@ -620,7 +620,7 @@ run a server to test it with a telnet client. To do that, call ``python calculus
 
 ::
 
-    
+
     $ telnet localhost 46194
     Trying 127.0.0.1...
     Connected to localhost.
@@ -723,7 +723,7 @@ to be triggered after a certain duration.
 
 What happens here? We instantiate our protocol as usual, the only trick
 is to create the clock, and assign ``proto.callLater`` to
-``clock.callLater`` . Thus, every ``callLater`` 
+``clock.callLater`` . Thus, every ``callLater``
 call in the protocol will finish before ``clock.advance()`` returns.
 
 
@@ -750,7 +750,7 @@ Let's implement that in our code.
 
 If everything completed successfully,
 it is important to remember to cancel the
-``DelayedCall`` 
+``DelayedCall``
 returned by ``callLater`` .
 
 
@@ -797,7 +797,7 @@ have failed in the middle.
 
 
 Trial also has a ``addCleanup`` method, which makes
-these kind of cleanups easy and removes the need for ``tearDown`` . For example, you could remove the code in ``_test`` 
+these kind of cleanups easy and removes the need for ``tearDown`` . For example, you could remove the code in ``_test``
 this way:
 
 
@@ -806,12 +806,12 @@ this way:
 
 .. code-block:: python
 
-    
+
     def setUp(self):
         factory = RemoteCalculationFactory()
         self.port = reactor.listenTCP(0, factory, interface="127.0.0.1")
         self.addCleanup(self.port.stopListening)
-    
+
     def _test(self, op, a, b, expected):
         creator = protocol.ClientCreator(reactor, RemoteCalculationClient)
         def cb(client):
@@ -847,7 +847,7 @@ So we'll want a test like this:
 
 .. code-block:: python
 
-    
+
     def test_invalidParameters(self):
         self.proto.dataReceived('add foo bar\r\n')
         self.assertEqual(self.tr.value(), "error\r\n")
@@ -869,15 +869,15 @@ If you try something like that, it will not work. Here is the output you should 
 
 .. code-block:: console
 
-    
+
     trial calculus.test.test_remote_3.RemoteCalculationTestCase.test_invalidParameters
     calculus.test.test_remote_3
       RemoteCalculationTestCase
         test_invalidParameters ...                                          [ERROR]
-    
+
     ===============================================================================
     [ERROR]: calculus.test.test_remote_3.RemoteCalculationTestCase.test_invalidParameters
-    
+
     Traceback (most recent call last):
       File "/tmp/calculus/remote_2.py", line 27, in lineReceived
         result = op(a, b)
@@ -888,7 +888,7 @@ If you try something like that, it will not work. Here is the output you should 
     exceptions.TypeError:
     -------------------------------------------------------------------------------
     Ran 1 tests in 0.004s
-    
+
     FAILED (errors=1)
 
 
@@ -955,7 +955,7 @@ What have we done here ?
 
 
 
-For doing that, we then use the ``TimeoutMixin`` 
+For doing that, we then use the ``TimeoutMixin``
 class, that does almost everything we want. The great thing is that it almost
 changes nothing to our class.
 
@@ -1003,7 +1003,7 @@ This version of the code makes the same assertions, but no longer returns any
 Deferreds from any test methods.  Instead of making assertions about the result
 of the Deferred in a callback, it makes the assertions as soon as
 it *knows* the Deferred is supposed to have a result (in
-the ``_test`` method and in ``test_timeout`` 
+the ``_test`` method and in ``test_timeout``
 and ``test_timeoutConnectionLost`` ).  The possibility
 of *knowing* exactly when a Deferred is supposed to have a test is what
 makes ``successResultOf`` useful in unit testing, but prevents it from being
@@ -1104,9 +1104,4 @@ So what did you learn in this document?
 - And some small tips you can't live without.
 
 If one of the topics still looks cloudy to you, please give us your feedback!
-You can file tickets to improve this document
-
-`on the Twisted web site <http://twistedmatrix.com/>`_ .
-
-
-
+You can file tickets to improve this document `on the Twisted web site <https://twistedmatrix.com/trac/newticket/>`_ .
