@@ -291,9 +291,8 @@ We use the interface object to do this:
     <__main__.AdaptToAmericanSocket instance at 0x1a5120>
 
 
-When calling an interface with an object as an argument, the interface looks in the adapter registry for an adapter which implements the interface for
-the given instance's class. If it finds one, it constructs an instance of the
-Adapter class, passing the constructor the original instance, and returns it.
+When calling an interface with an object as an argument, the interface looks in the adapter registry for an adapter which implements the interface for the given instance's class.
+If it finds one, it constructs an instance of the Adapter class, passing the constructor the original instance, and returns it.
 Now the ``HairDryer`` can safely be used with the adapted  ``UKSocket`` .
 But what happens if we attempt to adapt an object which already implements ``IAmericanSocket``?
 We simply get back the original instance:
