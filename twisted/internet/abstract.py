@@ -485,8 +485,7 @@ def isIPAddress(addr):
     """
     Determine whether the given string (or bytes) represents an IPv4 address.
 
-    @type addr: C{str}
-    @type addr: C{bytes}
+    @type addr: C{str} or C{unicode}
     @param addr: A string which may or may not be the decimal dotted
     representation of an IPv4 address.
 
@@ -516,10 +515,9 @@ def isIPv6Address(addr):
     """
     Determine whether the given string (or bytes) represents an IPv6 address.
 
+    @type addr: C{str} or C{unicode}
     @param addr: A string which may or may not be the hex
         representation of an IPv6 address.
-    @type addr: C{str}
-    @type addr: C{bytes}
 
     @return: C{True} if C{addr} represents an IPv6 address, C{False}
         otherwise.
