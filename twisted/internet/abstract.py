@@ -483,9 +483,10 @@ class FileDescriptor(_ConsumerMixin, _LogOwner):
 
 def isIPAddress(addr):
     """
-    Determine whether the given string represents an IPv4 address.
+    Determine whether the given string (or bytes) represents an IPv4 address.
 
     @type addr: C{str}
+    @type addr: C{bytes}
     @param addr: A string which may or may not be the decimal dotted
     representation of an IPv4 address.
 
@@ -493,7 +494,11 @@ def isIPAddress(addr):
     @return: C{True} if C{addr} represents an IPv4 address, C{False}
     otherwise.
     """
-    dottedParts = addr.split('.')
+    if isinstance(addr, unicode):
+        sep = u'.'
+    else:
+        sep = b'.'
+    dottedParts = addr.split(sep)
     if len(dottedParts) == 4:
         for octet in dottedParts:
             try:
@@ -509,16 +514,25 @@ def isIPAddress(addr):
 
 def isIPv6Address(addr):
     """
-    Determine whether the given string represents an IPv6 address.
+    Determine whether the given string (or bytes) represents an IPv6 address.
 
     @param addr: A string which may or may not be the hex
         representation of an IPv6 address.
     @type addr: C{str}
+    @type addr: C{bytes}
 
     @return: C{True} if C{addr} represents an IPv6 address, C{False}
         otherwise.
     @rtype: C{bool}
     """
+    if not isinstance(addr, unicode):
+        # In python 2 C{inet_pton} accepts both unicode strings and bytes, in
+        # Python 3 -- only unicode. To have similar behavior on Python 2 and 3
+        # decode bytes.
+        try:
+            addr = addr.decode('ascii')
+        except UnicodeDecodeError:
+            return False
     if '%' in addr:
         addr = addr.split('%', 1)[0]
     if not addr:
