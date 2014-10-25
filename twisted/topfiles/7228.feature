@@ -1,1 +1,1 @@
-Add a standard tox.ini usage file to simplify testing
+Add a tox.ini file to simplify testing with virtualenvs
