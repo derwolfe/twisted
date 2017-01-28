@@ -145,18 +145,22 @@ class Resource:
         return []
 
     def getStaticEntity(self, name):
+        name = ensureText(name)
         return self.children.get(name)
 
     def getDynamicEntity(self, name, request):
+        name = ensureText(name)
         if name not in self.children:
             return self.getChild(name, request)
         else:
             return None
 
     def delEntity(self, name):
+        name = ensureText(name)
         del self.children[name]
 
     def reallyPutEntity(self, name, entity):
+        name = ensureText(name)
         self.children[name] = entity
 
     # Concrete HTTP interface
