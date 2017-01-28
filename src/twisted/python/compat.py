@@ -342,6 +342,17 @@ else:
     long = long
 
 
+def ensure_utf8_text(text):
+    """
+    If L{text} is bytes, assume that it is L{UTF-8} encoded C{bytes} and
+    decode.
+
+    @rtype: L{unicode}
+    """
+    if isinstance(text, bytes):
+        return text.decode("utf-8")
+    return text
+
 
 def ioType(fileIshObject, default=unicode):
     """
@@ -834,6 +845,7 @@ else:
 __all__ = [
     "reraise",
     "execfile",
+    "ensure_utf8_text",
     "frozenset",
     "reduce",
     "set",

@@ -16,7 +16,7 @@ from twisted.python.compat import (
     reduce, execfile, _PY3, _PYPY, comparable, cmp, nativeString,
     networkString, unicode as unicodeCompat, lazyByteSlice, reraise,
     NativeStringIO, iterbytes, intToBytes, ioType, bytesEnviron, iteritems,
-    _coercedUnicode, unichr, raw_input, _bytesRepr
+    _coercedUnicode, unichr, raw_input, _bytesRepr, ensure_utf8_text
 )
 from twisted.python.filepath import FilePath
 from twisted.python.runtime import platform
