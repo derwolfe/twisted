@@ -218,6 +218,23 @@ class ResourceTests(TestCase):
         self.assertEqual(expected, set(exc.allowedMethods))
 
 
+    def test_pathAsText(self):
+        """
+        L{Resource.putChild} accepts both bytes and utf-8 encoded text for L{path}.
+        """
+        resource = Resource()
+        child = Resource()
+
+        bytes_path = b"L\xc3\xbcbeck"
+        text_path = bytes_path.decode("utf-8")
+
+        resource.putChild(text_path, child)
+        resource.putChild(bytes_path, child)
+
+        self.assertIdentical(
+            child, resource.getChildWithDefault(text_path, DummyRequest([])))
+        self.assertIdentical(
+            child, resource.getChildWithDefault(bytes_path, DummyRequest([])))
 
 
 class GetChildForRequestTests(TestCase):
