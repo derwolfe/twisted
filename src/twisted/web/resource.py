@@ -17,7 +17,7 @@ import warnings
 
 from zope.interface import Attribute, Interface, implementer
 
-from twisted.python.compat import nativeString, unicode, ensure_utf8_text
+from twisted.python.compat import nativeString, unicode, ensureText
 from twisted.python.reflect import prefixedMethodNames
 from twisted.python.components import proxyForInterface
 
@@ -199,7 +199,7 @@ class Resource:
 
         @see: L{IResource.getChildWithDefault}
         """
-        path = ensure_utf8_text(path)
+        path = ensureText(path)
         if path in self.children:
             return self.children[path]
         return self.getChild(path, request)
@@ -220,7 +220,7 @@ class Resource:
 
         @see: L{IResource.putChild}
         """
-        path = ensure_utf8_text(path)
+        path = ensureText(path)
         self.children[path] = child
         child.server = self.server
 

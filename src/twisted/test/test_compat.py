@@ -923,16 +923,17 @@ class FutureBytesReprTests(unittest.TestCase):
         self.assertEqual(_bytesRepr(b'\x00'), "b'\\x00'")
 
 
-class EnsureUTF8TextTests(unittest.TestCase):
+
+class EnsureTextTests(unittest.TestCase):
     """
-    Tests for L{twisted.python.compat.ensure_utf8_text}.
+    Tests for L{twisted.python.compat.ensureText}.
     """
 
-    def test_coercesBytesToUTF8Text(self):
+    def test_coercesBytesToText(self):
         """
-        L{twisted.python.compat.ensure_utf8_text} converts C{bytes} to L{UTF_8}
+        L{twisted.python.compat.ensureText} converts C{bytes} to L{UTF-8}
         encoded C{text}.
         """
-        self.assertEqual(u"abc", ensure_utf8_text(u"abc"))
-        self.assertEqual(u"\u2202", ensure_utf8_text(u"\u2202"))
-        self.assertEqual(u"\u2202", ensure_utf8_text(b"\xe2\x88\x82"),)
+        self.assertEqual(u"abc", ensureText(u"abc"))
+        self.assertEqual(u"\u2202", ensureText(u"\u2202"))
+        self.assertEqual(u"\u2202", ensureText(b"\xe2\x88\x82"),)

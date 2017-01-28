@@ -342,11 +342,16 @@ else:
     long = long
 
 
-def ensure_utf8_text(text):
+
+def ensureText(text):
     """
     If L{text} is bytes, assume that it is L{UTF-8} encoded C{bytes} and
     decode.
 
+    @param text: the C{bytes} or C{unicode} to encode as text.
+    @type text: C{bytes} or C{unicode}
+
+    @return: L{unicode} text decoded as C{unicode}
     @rtype: L{unicode}
     """
     if isinstance(text, bytes):
@@ -845,7 +850,7 @@ else:
 __all__ = [
     "reraise",
     "execfile",
-    "ensure_utf8_text",
+    "ensureText",
     "frozenset",
     "reduce",
     "set",

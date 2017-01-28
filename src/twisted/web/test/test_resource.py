@@ -225,16 +225,16 @@ class ResourceTests(TestCase):
         resource = Resource()
         child = Resource()
 
-        bytes_path = b"L\xc3\xbcbeck"
-        text_path = bytes_path.decode("utf-8")
+        bytesPath = b"L\xc3\xbcbeck"
+        textPath = bytes_path.decode("utf-8")
 
-        resource.putChild(text_path, child)
-        resource.putChild(bytes_path, child)
+        resource.putChild(textPath, child)
+        resource.putChild(bytesPath, child)
 
         self.assertIdentical(
-            child, resource.getChildWithDefault(text_path, DummyRequest([])))
+            child, resource.getChildWithDefault(textPath, DummyRequest([])))
         self.assertIdentical(
-            child, resource.getChildWithDefault(bytes_path, DummyRequest([])))
+            child, resource.getChildWithDefault(bytesPath, DummyRequest([])))
 
 
 class GetChildForRequestTests(TestCase):
