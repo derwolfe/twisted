@@ -46,11 +46,12 @@ class IResource(Interface):
         Resource, it must be provided. However, if subclassing Resource,
         getChild overridden instead.
 
-        @param name: A single path component from a requested URL.  For example,
+        @param name: A single path component from a requested URL. For example,
             a request for I{http://example.com/foo/bar} will result in calls to
             this method with C{b"foo"} and C{b"bar"} as values for this
-            argument.
-        @type name: C{bytes}
+            argument. If the L{path} is passed in as C{bytes}, it will be
+            assumed to be L{UTF-8} and decoded as C{unicode}.
+        @type name: C{bytes} or C{unicode}
 
         @param request: A representation of all of the information about the
             request that is being made for this child.
@@ -64,10 +65,12 @@ class IResource(Interface):
 
         @param path: A single path component, to be interpreted relative to the
             path this resource is found at, at which to put the given child.
-            For example, if resource A can be found at I{http://example.com/foo}
-            then a call like C{A.putChild(b"bar", B)} will make resource B
-            available at I{http://example.com/foo/bar}.
-        @type path: C{bytes}
+            For example, if resource A can be found at
+            I{http://example.com/foo} then a call like C{A.putChild(b"bar", B)}
+            will make resource B available at I{http://example.com/foo/bar}. If
+            the L{path} is passed in as C{bytes}, it will be assumed to be
+            L{UTF-8} and encoded as C{unicode}.
+        @type path: C{bytes} or C{unicode}
         """
 
 
