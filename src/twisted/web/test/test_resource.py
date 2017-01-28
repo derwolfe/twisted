@@ -166,7 +166,7 @@ class ResourceTests(TestCase):
         L{Resource.getChildWithDefault} delegates to L{Resource.getChild} when
         the requested path is not associated with any static child.
         """
-        path = b"foo"
+        path = u"foo"
         request = DummyRequest([])
         resource = DynamicChildren()
         child = resource.getChildWithDefault(path, request)
