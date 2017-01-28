@@ -348,11 +348,11 @@ def ensureText(text):
     If L{text} is bytes, assume that it is L{UTF-8} encoded C{bytes} and
     decode.
 
-    @param text: the C{bytes} or C{unicode} to encode as text.
+    @param text: the C{bytes} or C{unicode} to decode as text.
     @type text: C{bytes} or C{unicode}
 
-    @return: L{unicode} text decoded as C{unicode}
-    @rtype: L{unicode}
+    @return: text decoded as C{unicode}
+    @rtype: C{unicode}
     """
     if isinstance(text, bytes):
         return text.decode("utf-8")
